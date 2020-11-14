@@ -1,15 +1,18 @@
-var app = require('express')();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+const dotenv = require('dotenv').config();
+const app = require('express')();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+const PORT = process.env.PORT || 1234;
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+  socket.on('event', (event) => {
+    io.emit('event', event)
+  })
 });
 
-http.listen(3000, () => {
-  console.log('listening on *:3000');
+http.listen(process.env.PORT, () => {
+  console.log(`listening on *:${PORT}`);
 });
