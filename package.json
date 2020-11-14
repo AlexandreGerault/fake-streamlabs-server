@@ -1,0 +1,13 @@
+{
+  "name": "streamlabs-fake-server",
+  "version": "1.0.0",
+  "description": "Fake streamlab's socket io server",
+  "main": "index.js",
+  "author": "Alexandre Gérault",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
